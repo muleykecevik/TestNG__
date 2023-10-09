@@ -3,6 +3,7 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -26,6 +27,12 @@ public class Driver {
 
         if(driver == null){
             switch (istenenBrowser){
+                case "chrome" :
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions chromeOptions= new ChromeOptions();
+                    chromeOptions.setBrowserVersion("117");
+                    driver = new ChromeDriver();
+                    break;
                 case "firefox" :
                     WebDriverManager.firefoxdriver().setup();
                     driver= new FirefoxDriver();
